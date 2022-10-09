@@ -4,6 +4,7 @@
 describe('Depended Fucntions', function () {
     beforeEach(function () {
 
+        cy.wait(2000)
         cy.visit('/')
 
         cy.fixture('signinCredentials').then(function (data) {
@@ -37,7 +38,7 @@ describe('Depended Fucntions', function () {
 
         cy.get('.add-debt > .mat-focus-indicator').click()
 
-        cy.wait(4000)
+
 
         cy.get('formly-group.ng-star-inserted > :nth-child(1) > formly-wrapper-mat-form-field.ng-star-inserted > .mat-form-field > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-infix').type('Mikasa')
 

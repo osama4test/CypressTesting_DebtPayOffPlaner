@@ -8,7 +8,7 @@
     "cypress:open": "cypress open",
     "headTest": "npx cypress run --headed",
     "googleTest": "npx cypress run --browser chrome",
-    "dashboardTest": "npx cypress run --record --key 77d40007-5d8e-40a4-810b-06e20ae5b819 --parallel",
-    "parallelTest": "npx cypress run --record --key 77d40007-5d8e-40a4-810b-06e20ae5b819"
+    "dashboardTest": "npx cypress run --record --key 77d40007-5d8e-40a4-810b-06e20ae5b819",
+    "parallelTest": "npx cypress run --record --key 77d40007-5d8e-40a4-810b-06e20ae5b819 --parallel"
   }
 }
