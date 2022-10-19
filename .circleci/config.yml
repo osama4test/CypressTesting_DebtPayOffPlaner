@@ -1,8 +1,19 @@
 version: '2.1'
 orbs:
-  node: circleci/node@x.y
+  node: circleci/node@5.0.3
 workflows:
   run-npm-command:
     jobs:
-      - node/run:
-          npm-run: build
+       test:
+    executor:
+      name: node/default
+      tag: '13.14'
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          command: npm run test
+workflows:
+  test_my_app:
+    jobs:
+      - test
