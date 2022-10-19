@@ -1,19 +1,25 @@
-version: '2.1'
+
+version: 2.1
 orbs:
-  node: circleci/node@5.0.3
-workflows:
-  run-npm-command:
-    jobs:
-       test:
-    executor:
-      name: node/default
-      tag: '13.14'
-    steps:
-      - checkout
-      - node/install-packages
-      - run:
-          command: npm run test
-workflows:
-  test_my_app:
-    jobs:
-      - test
+  cypress: cypress-io/cypress@2.1.0
+  codecov: codecov/codecov@1.2.3 #
+  win: circleci/windows@4.1.1
+
+
+    - cypress/run:
+        name: "UI Tests - Chrome"
+        browser: chrome
+        spec: cypress/tests/ui/*
+        executor: with-chrome
+        command-prefix: npx percy exec --
+        yarn: true
+        start: yarn start:ci
+        record: true
+        parallel: true
+        parallelism: 5
+        ci-build-id: ${CIRCLE_SHA1:0:8}
+        group: "UI - Chrome"
+        requires:
+          - Setup Windows
+        post-steps:
+          - report-coverage
